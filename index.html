@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Face Recognation</title>
+    <script defer src="face-api.min.js">
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        padding:0px;
+        margin:0px;
+        box-sizing:border-box;
+
+    }
+    /* .container{
+        padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh; 
+    display: flex; 
+ align-items: center; 
+    justify-content: center;
+    }
+   */
+   .box{
+    width:600px;
+    height:460px;
+    padding:0px;
+    border:2px solid blue;
+    position:absolute;
+    left:0px;
+    margin-top:0px;
+    margin-left:0px;
+    
+   }
+   #main{
+    /* border:1px solid red; */
+    width:100%;
+    height:750px;
+    background: linear-gradient(0deg, rgb(1, 0, 26) 0%, rgb(0, 21, 116) 15%, rgb(82, 226, 255) 100%);
+    margin-bottom:0px;
+   
+    /* position: absolute; */
+   }
+   #btn{
+    width:80px;
+    height:40px;
+    position:relative;
+
+   }
+ 
+
+   /* CSS */
+.button-29 {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-29:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button-29:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-29:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+
+
+
+#bottom-section{
+    width:100%;
+    height:500px;
+    background-color:rgb(0, 11, 59);
+    position:relative;
+    top:100px;
+    left:0;
+    margin-top:0px;
+    /* display:flex;
+    align-items:center;
+    justify-content:center; */
+
+    
+
+   }
+
+
+/* css of names section  */
+.names-section{
+ 
+  width:90%;
+  height:400px;
+  border:1px solid red;
+}
+
+
+
+/* css of attendence. */
+
+.container {
+            max-width: 1400px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filters select, .filters input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        table th {
+            background: #f9fafb;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .status.present {
+            background: #28a745;
+        }
+
+        .status.absent {
+            background: #dc3545;
+        }
+
+        .status.late {
+            background: #ffc107;
+        }
+
+        .download-options {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .download-options button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .download-options button:hover {
+            background-color: #0056b3;
+        }
+
+        /* // stryling of para */
+        #para{
+            background-color:red;
+        }
+/* recognized list  */
+#recognizedList{
+    background-color:red;
+}
+#printSection {
+      border: 1px solid #000;
+      padding: 10px;
+      margin-top: 10px;
+    }
+</style>
+
+<body>
+    <section id="main">
+        
+ 
+        <div class="header-section">face recognition system</div>
+  
+    <div id="box"> 
+        <video id="video" width="700" height="530" autoplay></video>
+    </div>
+
+</section>
+
+<br>
+     <!-- <div id="box">this is content</div> -->
+    
+    <section id="bottom-section">
+        <div id="recognizedList">
+            <!-- <p id="para">recognized : loading.....</p> -->
+            <ul id="namesList"></ul>
+        </div>
+        
+      <div class="container" id="printSection">
+        <div class="header">
+            <h1>Face Recognition Attendance</h1>
+            <div class="filters">
+                <p id="currentDate"></p>
+                <input type="text" placeholder="Search by Name" id="name">
+                <select id="year">
+                    <option value="">Select Ye</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                </select>
+                <select id="status">
+                    <option value="">Filter by Status</option>
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                    <option value="late">Late</option>
+                </select>
+            </div>
+        </div>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>000</td>
+                    <td id="para">Demo : name</td>
+                    <td>2024</td>
+                    <td>09:00 AM</td>
+                    <td><span class="status present">Present</span></td>
+                </tr>
+                <!-- <tr>
+                    <td>002</td>
+                    <td>Jane Smith</td>
+                    <td>2023</td>
+                    <td>09:10 AM</td>
+                    <td><span class="status late">Late</span></td>
+                </tr> -->
+                <!-- <tr>
+                    <td>003</td>
+                    <td>Sam Wilson</td>
+                    <td>2022</td>
+                    <td>-</td>
+                    <td><span class="status absent">Absent</span></td>
+                </tr> -->
+            </tbody>
+        </table>
+    
+        <div class="download-options">
+            <button id="printButton">Download Daily</button>
+            <!-- <button onclick="downloadReport('monthly')">Download Monthly</button>
+            <button onclick="customizeDates()">Customize Dates</button> -->
+        </div>
+    </div>
+       
+
+
+
+    <!-- <button id="printButton">Print Section</button> -->
+
+
+    </section> 
+
+
+
+    <!-- <button id="btn"> reload </button>
+     HTML !-->
+<!-- <button class="button-29" role="button">Button 29</button>
+<button class="glow-on-hover" type="button">HOVER ME, THEN CLICK ME!</button> --> 
+
+
+
+
+
+<!-- <button onclick="printSection('attendanceSection')">Print Alkjlk</button> -->
+
+     
+  <script>
+
+    // Function to print a specific section
+function printSection() {
+  const printContent = document.getElementById("printSection"); // Get the section to print
+  const originalContent = document.body.innerHTML; // Save the original content
+
+  // Replace the body content with the print section's content
+  document.body.innerHTML = printContent.outerHTML;
+
+  // Trigger the print dialog
+  window.print();
+
+  // Restore the original content
+  document.body.innerHTML = originalContent;
+
+  // Reload scripts to ensure functionality (optional for dynamic scripts)
+  location.reload();
+}
+
+// Attach the printSection function to the button click event
+document.getElementById("printButton").addEventListener("click", printSection);
+
+
+
+
+
+
+
+  // Function to display the current date
+// Function to display the current date in Day/Month/Year format
+function displayDate() {
+  const today = new Date(); // Get the current date
+
+  // Extract day, month, and year
+  const day = today.getDate(); // Get the day of the month
+  const month = today.getMonth() + 1; // Get the month (0-based, so add 1)
+  const year = today.getFullYear(); // Get the year
+
+  // Format the date as Day/Month/Year
+  const formattedDate = `${day}/${month}/${year}`;
+
+  // Insert the formatted date into the HTML element with id 'currentDate'
+  document.getElementById("currentDate").textContent = formattedDate;
+}
+
+// Call the function when the page loads
+window.onload = displayDate;
+
+
+
+  </script>    
+</body>  
+
+</html>
